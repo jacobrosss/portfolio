@@ -1,8 +1,6 @@
 <script lang="ts">
 	import welcomeFallback from '$lib/images/svelte-welcome.png';
 	import welcome from '$lib/images/svelte-welcome.webp';
-
-	import Counter from './Counter.svelte';
 </script>
 
 <svelte:head>
@@ -19,14 +17,9 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		Hello World!
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
 </section>
 
 <style>
