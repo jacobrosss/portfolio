@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#547f00"/>
+  <!-- Curly braces { } — representing API/code -->
+  <text x="32" y="44" text-anchor="middle" font-family="monospace" font-weight="700" font-size="36" fill="#ffffff">{ }</text>
+</svg>
