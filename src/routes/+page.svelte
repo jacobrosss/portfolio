@@ -1,53 +1,46 @@
+<!--
+  +page.svelte — The main (and only) page.
+  ==========================================
+  This is where everything comes together. It:
+  1. Imports data from portfolioData.ts
+  2. Renders the SwaggerHeader
+  3. Loops through tags, rendering a TagGroup for each
+
+  Since this is a single-page portfolio, all content lives here.
+-->
 <script lang="ts">
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
-	import welcome from '$lib/images/svelte-welcome.webp';
+	// Import components
+	import SwaggerHeader from '$lib/components/SwaggerHeader.svelte';
+	import TagGroup from '$lib/components/TagGroup.svelte';
+
+	// Import data
+	import { apiInfo, tags, getEndpointsByTag } from '$lib/portfolioData';
 </script>
 
+<!-- SEO head tags -->
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>{apiInfo.title} — Portfolio</title>
+	<meta name="description" content="{apiInfo.description}" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
+<!-- Swagger Header (green bar + info) -->
+<SwaggerHeader
+	title={apiInfo.title}
+	version={apiInfo.version}
+	description={apiInfo.description}
+/>
 
-		Hello World!
-	</h1>
-
-</section>
+<!-- Main content: one TagGroup per category -->
+<div class="swagger-content">
+	{#each tags as tag (tag.name)}
+		<TagGroup {tag} endpoints={getEndpointsByTag(tag.name)} />
+	{/each}
+</div>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.swagger-content {
+		max-width: 64rem;
+		margin: 0 auto;
+		padding: 1rem;
 	}
 </style>
