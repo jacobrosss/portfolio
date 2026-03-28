@@ -1,17 +1,8 @@
-// =============================================================
-// portfolioData.ts — All your portfolio content lives here.
-//
-// Think of this like a database for your site. Components just
-// read from these arrays. To add a new project or skill, you
-// only edit THIS file — no touching components.
-// =============================================================
 
-// ── Types ────────────────────────────────────────────────────
-
-/** HTTP methods — used for color-coding endpoint rows */
+/** HTTP methods for color-coding endpoint rows */
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-/** A single "endpoint" in your portfolio */
+/** Endpoint Row */
 export interface Endpoint {
 	method: HttpMethod;
 	path: string;
@@ -20,55 +11,75 @@ export interface Endpoint {
 	detail: EndpointDetail;
 }
 
-/** The expanded content shown when you click an endpoint */
+/** Endpoint Expanded View */
 export interface EndpointDetail {
 	description: string;
 	responseBody: Record<string, unknown>; // displayed as JSON
 	links?: { label: string; url: string }[];
 }
 
-/** A tag group (category header) */
+/* Tag Group */
 export interface Tag {
 	name: string;
 	description: string;
 }
 
-// ── API Info (shown in the header) ───────────────────────────
-
-export const apiInfo = {
-	title: 'Jacob Ross',
+// Banner Info
+export const BannerInfo = {
+	title: 'Jacob Ross API',
 	version: '1.0.0',
-	description: 'Backend Developer — Personal Portfolio API'
+	description: '/github/jacobrosss'
 };
 
-// ── Tags (categories) ────────────────────────────────────────
-// Order here = order on the page
-
+// Tags
 export const tags: Tag[] = [
 	{ name: 'About', description: 'Who I am' },
-	{ name: 'Projects', description: 'Things I have built' },
-	{ name: 'Skills', description: 'Technologies and tools' },
 	{ name: 'Experience', description: 'Work history' },
+	{ name: 'Skills', description: 'Technologies and tools' },
+	{ name: 'Projects', description: 'Things I have built' },
 	{ name: 'Contact', description: 'Get in touch' }
 ];
 
-// ── Endpoints (portfolio items) ──────────────────────────────
-// Each endpoint belongs to one tag via the `tag` field.
-
+// Endpoints
 export const endpoints: Endpoint[] = [
 	// ── About ──
 	{
 		method: 'GET',
 		path: '/about/me',
-		summary: 'Get a brief introduction',
+		summary: 'Brief introduction',
 		tag: 'About',
 		detail: {
 			description: 'Returns basic information about me.',
 			responseBody: {
 				name: 'Jacob Ross',
-				role: 'Backend Developer',
-				location: 'Your City, ST',
-				bio: 'I enjoy building robust APIs and scalable systems.'
+				role: 'Software Developer',
+				location: 'Kitchener, ON',
+				bio: 'I enjoy designing backend systems, restful APIs and databases.'
+			}
+		}
+	},
+	{
+		method: 'GET',
+		path: '/about/education',
+		summary: 'My education',
+		tag: 'About',
+		detail: {
+			description: 'Returns a list of educations.',
+			responseBody: {
+				education: [
+					{
+						name: 'Conestoga College',
+						degree: 'Bachelor of Applied Computer Science',
+						period: '2024 - 2026',
+						summary: 'TODO...'
+					},
+					{
+						name: 'Conestoga College',
+						diploma: 'Software Engineering Technology (Co-op)',
+						period: '2021 - 2025',
+						summary: 'TODO...'
+					}
+				]
 			}
 		}
 	},
@@ -76,15 +87,15 @@ export const endpoints: Endpoint[] = [
 	// ── Projects ──
 	{
 		method: 'GET',
-		path: '/projects/portfolio-site',
-		summary: 'This very website',
+		path: '/projects/portfolio-ui',
+		summary: 'This static webpage',
 		tag: 'Projects',
 		detail: {
 			description: 'A personal portfolio styled like Swagger UI, built with SvelteKit.',
 			responseBody: {
 				name: 'Portfolio Site',
-				stack: ['SvelteKit', 'TypeScript', 'CSS'],
-				status: 'In Progress'
+				stack: ['SvelteKit', 'TypeScript', 'CSS', 'GitHub Actions'],
+				status: 'In Progress...'
 			},
 			links: [
 				{ label: 'GitHub', url: 'https://github.com/jacobrosss/portfolio' }
@@ -93,19 +104,39 @@ export const endpoints: Endpoint[] = [
 	},
 	{
 		method: 'POST',
-		path: '/projects/ecommerce-api',
-		summary: 'Full-stack e-commerce platform',
+		path: '/projects/todo-api',
+		summary: 'TODO',
 		tag: 'Projects',
 		detail: {
-			description: 'A RESTful API for an e-commerce platform with admin dashboard.',
+			description: 'TODO',
 			responseBody: {
-				name: 'E-Commerce API',
-				stack: ['ASP.NET Core', 'PostgreSQL', 'Docker'],
-				status: 'Completed'
+				name: 'TODO',
+				stack: ['TODO'],
+				status: 'TODO'
 			},
 			links: [
 				{ label: 'GitHub', url: 'https://github.com/jacobrosss' }
 			]
+		}
+	},
+
+	// ── Experience ──
+	{
+		method: 'GET',
+		path: '/experience/current-role',
+		summary: 'Current position',
+		tag: 'Experience',
+		detail: {
+			description: 'Details about my current role.',
+			responseBody: {
+				title: 'Student',
+				company: 'Conestoga College',
+				period: '2024 – Present',
+				highlights: [
+					'Built RESTful APIs serving N requests/day',
+					'Implemented CI/CD pipelines'
+				]
+			}
 		}
 	},
 
@@ -116,9 +147,9 @@ export const endpoints: Endpoint[] = [
 		summary: 'Programming languages I use',
 		tag: 'Skills',
 		detail: {
-			description: 'A list of programming languages I work with regularly.',
+			description: 'Returns a list of frequently used languages',
 			responseBody: {
-				languages: ['C#', 'TypeScript', 'Python', 'SQL']
+				languages: ['C/C++', 'C#', 'Python', 'SQL', 'HTML', 'CSS', 'JavaScript', 'TypeScript']
 			}
 		}
 	},
@@ -130,29 +161,10 @@ export const endpoints: Endpoint[] = [
 		detail: {
 			description: 'Frameworks, tools, and platforms I have experience with.',
 			responseBody: {
-				frameworks: ['ASP.NET Core', 'SvelteKit'],
-				databases: ['PostgreSQL', 'SQL Server'],
-				devops: ['Docker', 'GitHub Actions', 'CI/CD']
-			}
-		}
-	},
-
-	// ── Experience ──
-	{
-		method: 'PUT',
-		path: '/experience/current-role',
-		summary: 'Current position',
-		tag: 'Experience',
-		detail: {
-			description: 'Details about my current role.',
-			responseBody: {
-				title: 'Your Title',
-				company: 'Your Company',
-				period: '2024 – Present',
-				highlights: [
-					'Built RESTful APIs serving N requests/day',
-					'Implemented CI/CD pipelines'
-				]
+				frameworks: ['.NET', 'ASP.NET', 'Svelte', 'TODO...'],
+				databases: ['PostgreSQL', 'SQL Server', 'TODO...'],
+				software: ['Visual Studio', 'SSMS', 'Git', 'TODO...'],
+				devops: ['Docker', 'GitHub Actions', 'Azure', 'Jira', 'TODO...']
 			}
 		}
 	},
@@ -166,17 +178,19 @@ export const endpoints: Endpoint[] = [
 		detail: {
 			description: 'Reach out via email or social links.',
 			responseBody: {
-				email: 'your.email@example.com',
+				email: 'jacob01.ross@gmail.com',
 				github: 'https://github.com/jacobrosss',
-				linkedin: 'https://linkedin.com/in/yourprofile'
-			}
+				linkedin: 'https://www.linkedin.com/in/jacobdouglasross/'
+			},
+			links: [
+				{ label: 'GitHub', url: 'https://github.com/jacobrosss' },
+				{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/jacobdouglasross/' }
+			]
 		}
 	}
 ];
 
-// ── Helper: get endpoints by tag ────────────────────────────
-// Used by TagGroup component to filter endpoints
-
+// Tag helper function
 export function getEndpointsByTag(tagName: string): Endpoint[] {
 	return endpoints.filter((e) => e.tag === tagName);
 }

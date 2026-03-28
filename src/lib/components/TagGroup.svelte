@@ -1,29 +1,14 @@
-<!--
-  TagGroup.svelte
-  ===============
-  A collapsible category section — groups endpoints under a tag.
-  Like Swagger UI's "pet", "store", "user" groups.
-
-  Svelte 5 key concepts shown here:
-  - $state()    → reactive local state
-  - {#each ...} → rendering a list of items
-  - Component composition (rendering Endpoint children)
--->
 <script lang="ts">
 	import type { Tag, Endpoint as EndpointType } from '$lib/portfolioData';
 	import Endpoint from './Endpoint.svelte';
 
-	// ── Props ─────────────────────────────────────────────────
 	// This component receives a tag object and its array of endpoints.
-
 	let { tag, endpoints }: {
 		tag: Tag;
 		endpoints: EndpointType[];
 	} = $props();
 
-	// ── Local state ──────────────────────────────────────────
 	// Tag groups start expanded by default
-
 	let expanded = $state(true);
 
 	function toggle() {
@@ -32,7 +17,6 @@
 </script>
 
 <section class="tag-group">
-	<!-- Tag header (clickable to collapse/expand) -->
 	<button class="tag-header" onclick={toggle}>
 		<div class="tag-header-left">
 			<h2 class="tag-name">{tag.name}</h2>
@@ -41,16 +25,9 @@
 		<span class="tag-chevron" class:rotated={expanded}>▼</span>
 	</button>
 
-	<!-- Endpoints list (only shown when expanded) -->
+	<!-- Expanded View -->
 	{#if expanded}
 		<div class="tag-endpoints">
-			<!--
-			  {#each array as item}
-			  This is Svelte's loop. It renders one <Endpoint> per item.
-			  The (endpoint.path) part is a "key" — it helps Svelte
-			  efficiently update the DOM when items change, like
-			  React's key={...} prop.
-			-->
 			{#each endpoints as endpoint (endpoint.path)}
 				<Endpoint {endpoint} />
 			{/each}
@@ -60,10 +37,14 @@
 
 <style>
 	.tag-group {
-		margin-bottom: 1.5rem;
-		border: 1px solid #d8dde7;
-		border-radius: 4px;
+		margin-bottom: 0;
+		border: none;
+		border-bottom: none;
 		overflow: hidden;
+	}
+
+	.tag-group:last-child {
+		border-bottom: 1px solid #d1d7e1;
 	}
 
 	/* ── Tag header ────────────────────────────────────────── */
@@ -73,7 +54,7 @@
 		justify-content: space-between;
 		width: 100%;
 		padding: 0.75rem 1rem;
-		background: #f7f7f7;
+		background: #fff;
 		border: none;
 		border-bottom: 1px solid #d8dde7;
 		cursor: pointer;

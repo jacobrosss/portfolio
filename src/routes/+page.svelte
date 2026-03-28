@@ -1,46 +1,25 @@
-<!--
-  +page.svelte — The main (and only) page.
-  ==========================================
-  This is where everything comes together. It:
-  1. Imports data from portfolioData.ts
-  2. Renders the SwaggerHeader
-  3. Loops through tags, rendering a TagGroup for each
-
-  Since this is a single-page portfolio, all content lives here.
--->
 <script lang="ts">
-	// Import components
-	import SwaggerHeader from '$lib/components/SwaggerHeader.svelte';
-	import TagGroup from '$lib/components/TagGroup.svelte';
+	import TopBar from '$lib/components/TopBar.svelte';
+	import Banner from '$lib/components/Banner.svelte';
+	import Content from '$lib/components/Content.svelte';
 
-	// Import data
-	import { apiInfo, tags, getEndpointsByTag } from '$lib/portfolioData';
+	import { BannerInfo } from '$lib/portfolioData';
 </script>
 
-<!-- SEO head tags -->
 <svelte:head>
-	<title>{apiInfo.title} — Portfolio</title>
-	<meta name="description" content="{apiInfo.description}" />
+	<title>{BannerInfo.title} — Portfolio</title>
+	<meta name="description" content="{BannerInfo.description}" />
 </svelte:head>
 
-<!-- Swagger Header (green bar + info) -->
-<SwaggerHeader
-	title={apiInfo.title}
-	version={apiInfo.version}
-	description={apiInfo.description}
+<TopBar
+	title={BannerInfo.title}
 />
 
-<!-- Main content: one TagGroup per category -->
-<div class="swagger-content">
-	{#each tags as tag (tag.name)}
-		<TagGroup {tag} endpoints={getEndpointsByTag(tag.name)} />
-	{/each}
-</div>
+<Banner
+	title={BannerInfo.title}
+	version={BannerInfo.version}
+	description={BannerInfo.description}
+/>
 
-<style>
-	.swagger-content {
-		max-width: 64rem;
-		margin: 0 auto;
-		padding: 1rem;
-	}
-</style>
+<Content 
+/>
