@@ -26,7 +26,7 @@ export interface Tag {
 
 // Banner Info
 export const BannerInfo = {
-	title: 'Jacob Ross API',
+	title: 'Jacob Ross',
 	version: '1.0.0',
 	description: '/github/jacobrosss'
 };

@@ -4,7 +4,6 @@
 	} = $props();
 </script>
 
-<!-- Top green bar (like Swagger UI's header) -->
 <header class="topbar">
 	<div class="topbar-inner">
 		<span class="topbar-title">{title}</span>

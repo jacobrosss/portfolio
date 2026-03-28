@@ -2,14 +2,12 @@
 	import type { Tag, Endpoint as EndpointType } from '$lib/portfolioData';
 	import Endpoint from './Endpoint.svelte';
 
-	// This component receives a tag object and its array of endpoints.
 	let { tag, endpoints }: {
 		tag: Tag;
 		endpoints: EndpointType[];
 	} = $props();
 
-	// Tag groups start expanded by default
-	let expanded = $state(true);
+	let expanded = $state(true); // Start Expanded
 
 	function toggle() {
 		expanded = !expanded;

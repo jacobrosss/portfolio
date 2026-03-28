@@ -16,7 +16,7 @@
 />
 
 <Banner
-	title={BannerInfo.title}
+	title={BannerInfo.title + ' API'}
 	version={BannerInfo.version}
 	description={BannerInfo.description}
 />

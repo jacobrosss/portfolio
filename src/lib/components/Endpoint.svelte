@@ -1,66 +1,35 @@
-<!--
-  Endpoint.svelte
-  ===============
-  A single endpoint row — the colored method badge + path + summary.
-  Clicking it expands/collapses the detail view.
-
-  Svelte 5 key concepts shown here:
-  - $state()     → reactive local state (like useState in React)
-  - onclick      → event handling
-  - class:name   → conditional CSS classes
-  - {#if ...}    → conditional rendering
-  - Snippet/child component composition
--->
 <script lang="ts">
 	import type { Endpoint as EndpointType } from '$lib/portfolioData';
 	import EndpointDetail from './EndpointDetail.svelte';
 
-	// Props: the endpoint data object
 	let { endpoint }: { endpoint: EndpointType } = $props();
-
-	// ── Local state ──────────────────────────────────────────
-	// $state() creates a reactive variable. When it changes,
-	// Svelte automatically updates the DOM. No need for
-	// setState() or manual DOM manipulation.
 
 	let expanded = $state(false);
 
-	// Toggle expanded/collapsed on click
 	function toggle() {
 		expanded = !expanded;
 	}
 
-	// Map method → CSS class for color coding
-	// (the actual colors are defined in swagger-theme.css)
 	function methodClass(method: string): string {
 		return `method-${method.toLowerCase()}`;
 	}
 </script>
 
-<!-- 
-  The endpoint row container.
-  class:expanded={expanded} adds the "expanded" CSS class when expanded is true.
-  This is Svelte's shorthand for conditional classes.
--->
+
 <div class="endpoint-row {methodClass(endpoint.method)}" class:expanded>
-	<!-- Clickable summary bar -->
 	<button class="endpoint-summary" onclick={toggle}>
-		<!-- Method badge (GET, POST, etc.) -->
+	
 		<span class="method-badge {methodClass(endpoint.method)}">
 			{endpoint.method}
 		</span>
 
-		<!-- Path -->
 		<span class="endpoint-path">{endpoint.path}</span>
 
-		<!-- Summary text -->
 		<span class="endpoint-summary-text">{endpoint.summary}</span>
 
-		<!-- Expand/collapse chevron -->
 		<span class="chevron" class:rotated={expanded}>▼</span>
 	</button>
 
-	<!-- Expanded detail (only rendered when expanded is true) -->
 	{#if expanded}
 		<EndpointDetail detail={endpoint.detail} />
 	{/if}
