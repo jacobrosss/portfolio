@@ -3,7 +3,7 @@
 	import Banner from '$lib/components/Banner.svelte';
 	import Content from '$lib/components/Content.svelte';
 
-	import { BannerInfo } from '$lib/portfolioData';
+	import { BannerInfo } from '$lib/data';
 </script>
 
 <svelte:head>
