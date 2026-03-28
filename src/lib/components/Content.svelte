@@ -1,8 +1,9 @@
 
 <script lang="ts">
-	import TagGroup from '$lib/components/TagGroup.svelte';
+	import TagGroup from '$lib/components/endpoints/TagGroup.svelte';
 
-	import { tags, getEndpointsByTag } from '$lib/portfolioData';
+	import { tags } from '$lib/data';
+	import { getEndpointsByTag } from '$lib/utils';
 </script>
 
 <div class="content">
@@ -13,8 +14,10 @@
 
 <style>
 	.content {
-		width: 80%;
+		max-width: 1460px;
+		width: 100%;
 		margin: 0 auto;
 		padding: 1rem;
+		box-sizing: border-box;
 	}
 </style>

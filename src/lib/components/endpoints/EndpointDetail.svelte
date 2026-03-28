@@ -1,17 +1,6 @@
-<!--
-  EndpointDetail.svelte
-  =====================
-  The expanded content area — shown when an endpoint row is clicked.
-  Displays a description, a JSON "response body", and optional links.
-
-  Svelte 5 key concepts shown here:
-  - {#if ...}   → conditional rendering
-  - {#each ...} → looping over arrays
--->
 <script lang="ts">
-	import type { EndpointDetail as DetailType } from '$lib/portfolioData';
+	import type { EndpointDetail as DetailType } from '$lib/types';
 
-	// Props: the detail object for this endpoint
 	let { detail }: { detail: DetailType } = $props();
 </script>
 

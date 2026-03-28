@@ -16,10 +16,12 @@
 
 <style>
 	.banner {
-		width: 80%;
+		max-width: 1460px;
+		width: 100%;
 		margin: 0 auto;
 		padding: 1rem;
-        text-align: left;
+		text-align: left;
+		box-sizing: border-box;
 	}
 
 	.banner-title {

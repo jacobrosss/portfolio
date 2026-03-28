@@ -1,28 +1,4 @@
-
-/** HTTP methods for color-coding endpoint rows */
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
-
-/** Endpoint Row */
-export interface Endpoint {
-	method: HttpMethod;
-	path: string;
-	summary: string;
-	tag: string; // which TagGroup this belongs to
-	detail: EndpointDetail;
-}
-
-/** Endpoint Expanded View */
-export interface EndpointDetail {
-	description: string;
-	responseBody: Record<string, unknown>; // displayed as JSON
-	links?: { label: string; url: string }[];
-}
-
-/* Tag Group */
-export interface Tag {
-	name: string;
-	description: string;
-}
+import type { Endpoint, Tag } from './types';
 
 // Banner Info
 export const BannerInfo = {
@@ -190,7 +166,4 @@ export const endpoints: Endpoint[] = [
 	}
 ];
 
-// Tag helper function
-export function getEndpointsByTag(tagName: string): Endpoint[] {
-	return endpoints.filter((e) => e.tag === tagName);
-}
+

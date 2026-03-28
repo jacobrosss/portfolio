@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Endpoint as EndpointType } from '$lib/portfolioData';
+	import type { Endpoint as EndpointType } from '$lib/types';
 	import EndpointDetail from './EndpointDetail.svelte';
 
 	let { endpoint }: { endpoint: EndpointType } = $props();

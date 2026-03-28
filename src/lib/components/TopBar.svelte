@@ -17,7 +17,8 @@
 	}
 
 	.topbar-inner {
-		width: 80%;
+		max-width: 1460px;
+		width: 100%;
 		margin: 0 auto;
 	}
 

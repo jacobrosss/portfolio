@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Tag, Endpoint as EndpointType } from '$lib/portfolioData';
+	import type { Tag, Endpoint as EndpointType } from '$lib/types';
 	import Endpoint from './Endpoint.svelte';
 
 	let { tag, endpoints }: {
