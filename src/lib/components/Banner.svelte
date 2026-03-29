@@ -27,7 +27,7 @@
 	.banner-title {
 		font-size: 2rem;
 		font-weight: 700;
-		color: #3b4151;
+		color: var(--text-primary);
 		margin: 0;
 		display: flex;
 		align-items: center;
@@ -45,7 +45,8 @@
 	}
 
 	.banner-details {
-		color: #4990e2;
+		/* Inherit link color or set primary */
+		color: var(--method-get);
 		font-size: 0.95rem;
 		margin-top: 0.5rem;
 	}

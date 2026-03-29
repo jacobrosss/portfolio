@@ -37,7 +37,8 @@
 
 <style>
 	.endpoint-row {
-		border: 1px solid #d8dde7;
+		border: 1px solid var(--border-color);
+		background-color: var(--bg-section);
 		border-radius: 4px;
 		margin-bottom: 0.5rem;
 		overflow: hidden;
@@ -45,17 +46,17 @@
 	}
 
 	.endpoint-row:hover {
-		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 1px 4px var(--shadow-color);
 	}
 
 	/* ── Method-based background tints ─────────────────────── */
-	.endpoint-row.method-get    { border-color: #61affe; background: rgba(97, 175, 254, 0.1); }
-	.endpoint-row.method-post   { border-color: #49cc90; background: rgba(73, 204, 144, 0.1); }
-	.endpoint-row.method-put    { border-color: #fca130; background: rgba(252, 161, 48, 0.1); }
-	.endpoint-row.method-delete { border-color: #f93e3e; background: rgba(249, 62, 62, 0.1); }
+	.endpoint-row.method-get    { border-color: var(--method-get); background: var(--method-get-bg); }
+	.endpoint-row.method-post   { border-color: var(--method-post); background: var(--method-post-bg); }
+	.endpoint-row.method-put    { border-color: var(--method-put); background: var(--method-put-bg); }
+	.endpoint-row.method-delete { border-color: var(--method-delete); background: var(--method-delete-bg); }
 
 	.endpoint-row.expanded {
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+		box-shadow: 0 2px 8px var(--shadow-color);
 	}
 
 	/* ── Summary button (the clickable bar) ───────────────── */
@@ -86,22 +87,22 @@
 		flex-shrink: 0;
 	}
 
-	.method-badge.method-get    { background: #61affe; }
-	.method-badge.method-post   { background: #49cc90; }
-	.method-badge.method-put    { background: #fca130; }
-	.method-badge.method-delete { background: #f93e3e; }
+	.method-badge.method-get    { background: var(--method-get); }
+	.method-badge.method-post   { background: var(--method-post); }
+	.method-badge.method-put    { background: var(--method-put); }
+	.method-badge.method-delete { background: var(--method-delete); }
 
 	/* ── Path and summary text ─────────────────────────────── */
 	.endpoint-path {
 		font-weight: 600;
-		color: #3b4151;
+		color: var(--text-primary);
 		font-family: 'Fira Mono', monospace;
 		font-size: 0.85rem;
 		flex-shrink: 0;
 	}
 
 	.endpoint-summary-text {
-		color: #6b7280;
+		color: var(--text-secondary);
 		font-size: 0.85rem;
 		flex: 1;
 	}
@@ -109,7 +110,7 @@
 	/* ── Chevron ───────────────────────────────────────────── */
 	.chevron {
 		font-size: 0.7rem;
-		color: #6b7280;
+		color: var(--text-secondary);
 		transition: transform 0.2s;
 		flex-shrink: 0;
 	}

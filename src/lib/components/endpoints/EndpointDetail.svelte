@@ -37,8 +37,8 @@
 <style>
 	.endpoint-detail {
 		padding: 1rem 1.25rem;
-		border-top: 1px solid #d8dde7;
-		background: #fff;
+		border-top: 1px solid var(--border-color);
+		background: var(--bg-section);
 	}
 
 	.detail-section {
@@ -52,14 +52,14 @@
 	.detail-heading {
 		font-size: 0.8rem;
 		font-weight: 700;
-		color: #3b4151;
+		color: var(--text-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		margin: 0 0 0.5rem;
 	}
 
 	.detail-text {
-		color: #3b4151;
+		color: var(--text-primary);
 		font-size: 0.9rem;
 		margin: 0;
 		line-height: 1.5;
@@ -67,8 +67,8 @@
 
 	/* JSON response block — looks like Swagger's response viewer */
 	.json-response {
-		background: #1b1b1b;
-		color: #adffa8;
+		background: var(--bg-code);
+		color: var(--code-text);
 		padding: 1rem;
 		border-radius: 4px;
 		font-family: 'Fira Mono', 'Courier New', monospace;
@@ -92,7 +92,7 @@
 	.link-btn {
 		display: inline-block;
 		padding: 0.4rem 1rem;
-		background: #547f00;
+		background: var(--swagger-green);
 		color: #fff;
 		border-radius: 3px;
 		font-size: 0.85rem;
@@ -102,7 +102,7 @@
 	}
 
 	.link-btn:hover {
-		background: #3d5c00;
+		background: var(--swagger-green-dark);
 		text-decoration: none;
 	}
 </style>

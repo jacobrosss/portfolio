@@ -42,7 +42,7 @@
 	}
 
 	.tag-group:last-child {
-		border-bottom: 1px solid #d1d7e1;
+		border-bottom: 1px solid var(--border-color-dark);
 	}
 
 	/* ── Tag header ────────────────────────────────────────── */
@@ -52,16 +52,16 @@
 		justify-content: space-between;
 		width: 100%;
 		padding: 0.75rem 1rem;
-		background: #fff;
+		background: var(--bg-section);
 		border: none;
-		border-bottom: 1px solid #d8dde7;
+		border-bottom: 1px solid var(--border-color);
 		cursor: pointer;
 		font-family: inherit;
 		text-align: left;
 	}
 
 	.tag-header:hover {
-		background: #efefef;
+		background: var(--bg-tag-header);
 	}
 
 	.tag-header-left {
@@ -73,18 +73,18 @@
 	.tag-name {
 		font-size: 1.25rem;
 		font-weight: 700;
-		color: #3b4151;
+		color: var(--text-primary);
 		margin: 0;
 	}
 
 	.tag-description {
 		font-size: 0.85rem;
-		color: #6b7280;
+		color: var(--text-secondary);
 	}
 
 	.tag-chevron {
 		font-size: 0.8rem;
-		color: #6b7280;
+		color: var(--text-secondary);
 		transition: transform 0.2s;
 	}
 
@@ -95,6 +95,6 @@
 	/* ── Endpoints container ───────────────────────────────── */
 	.tag-endpoints {
 		padding: 0.75rem 1rem;
-		background: #fff;
+		background: var(--bg-section);
 	}
 </style>
