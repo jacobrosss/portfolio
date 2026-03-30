@@ -31,7 +31,7 @@
 	</button>
 
 	{#if expanded}
-		<EndpointDetail detail={endpoint.detail} />
+		<EndpointDetail {endpoint} />
 	{/if}
 </div>
 

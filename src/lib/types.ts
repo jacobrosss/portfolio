@@ -10,9 +10,18 @@ export interface Endpoint {
 	detail: EndpointDetail;
 }
 
+export interface Parameter {
+	name: string;
+	description: string;
+	in: 'query' | 'body' | 'path';
+	type: 'string' | 'number' | 'boolean';
+	required: boolean;
+}
+
 /** Endpoint Expanded View */
 export interface EndpointDetail {
 	description: string;
+	parameters?: Parameter[];
 	responseBody: Record<string, unknown>; // displayed as JSON
 	links?: { label: string; url: string }[];
 }

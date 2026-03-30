@@ -13,12 +13,13 @@ export const tags: Tag[] = [
 	{ name: 'Experience', description: 'Work history' },
 	{ name: 'Skills', description: 'Technologies and tools' },
 	{ name: 'Projects', description: 'Things I have built' },
-	{ name: 'Contact', description: 'Get in touch' }
+	{ name: 'Contact', description: 'Get in touch' },
+	{ name: 'Games', description: 'Play a game'}
 ];
 
 // Endpoints
 export const endpoints: Endpoint[] = [
-	// ── About ──
+	// About
 	{
 		method: 'GET',
 		path: '/about/me',
@@ -60,7 +61,7 @@ export const endpoints: Endpoint[] = [
 		}
 	},
 
-	// ── Projects ──
+	// Projects
 	{
 		method: 'GET',
 		path: '/projects/portfolio-ui',
@@ -96,7 +97,7 @@ export const endpoints: Endpoint[] = [
 		}
 	},
 
-	// ── Experience ──
+	// Experience
 	{
 		method: 'GET',
 		path: '/experience/current-role',
@@ -116,7 +117,7 @@ export const endpoints: Endpoint[] = [
 		}
 	},
 
-	// ── Skills ──
+	// Skills
 	{
 		method: 'GET',
 		path: '/skills/languages',
@@ -145,7 +146,7 @@ export const endpoints: Endpoint[] = [
 		}
 	},
 
-	// ── Contact ──
+	// Contact
 	{
 		method: 'POST',
 		path: '/contact/send',
@@ -162,6 +163,31 @@ export const endpoints: Endpoint[] = [
 				{ label: 'GitHub', url: 'https://github.com/jacobrosss' },
 				{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/jacobdouglasross/' }
 			]
+		}
+	},
+
+	// Games
+	{
+		method: 'POST',
+		path: '/games/wordle',
+		summary: 'Play wordle',
+		tag: 'Games',
+		detail: {
+			description: 'Guess the 5-letter word',
+			parameters: [
+				{
+					name: 'guess',
+					in: 'body',
+					description: 'A 5-letter word guess',
+					type: 'string',
+					required: true
+				}
+			],
+			responseBody: {
+				status: "Ready to play!",
+				attemptsLeft: 6,
+				guesses: []
+			}
 		}
 	}
 ];

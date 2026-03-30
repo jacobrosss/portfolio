@@ -5,11 +5,10 @@
 </script>
 
 <script module>
-	let isDarkMode = $state(false);
-
-	export function toggleTheme() {
-		isDarkMode = !isDarkMode;
-		if (isDarkMode) {
+	export function setTheme(event: Event) {
+		const target = event.target as HTMLSelectElement;
+		const isDark = target.value === 'dark';
+		if (isDark) {
 			document.documentElement.setAttribute('data-theme', 'dark');
 		} else {
 			document.documentElement.removeAttribute('data-theme');
@@ -19,9 +18,13 @@
 <header class="topbar">
 	<div class="topbar-inner">
 		<span class="topbar-title">{title}</span>
-		<button class="theme-toggle" onclick={toggleTheme}>
-			{isDarkMode ? 'Light' : 'Dark'}
-		</button>
+		<div class="download-url-wrapper">
+			<span class="select-label">Select a definition</span>
+			<select class="download-url-input" onchange={setTheme}>
+				<option value="light">Light Mode</option>
+				<option value="dark">Dark Mode</option>
+			</select>
+		</div>
 	</div>
 </header>
 
@@ -52,18 +55,33 @@
 		margin: 0 auto;
 	}
 
-	.theme-toggle {
-		background: var(--toggle-bg);
-		border: none;
-		color: var(--topbar-text);
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		cursor: pointer;
-		font-size: 0.8rem;
-		font-weight: 600;
+	.download-url-wrapper {
+		display: flex;
+		align-items: center;
 	}
 
-	.theme-toggle:hover {
-		background: var(--toggle-bg-hover);
+	.select-label {
+		color: var(--topbar-text);
+		font-size: 0.85rem;
+		font-weight: 700;
+		margin-right: 0.5rem;
+	}
+
+	.download-url-input {
+		background: var(--bg-section);
+		border: 1px solid var(--border-color);
+		border-radius: 4px;
+		padding: 0.3rem 0.5rem;
+		font-family: inherit;
+		font-weight: 700;
+		color: var(--text-primary);
+		cursor: pointer;
+		min-width: 15rem;
+		font-size: 0.85rem;
+	}
+
+	.download-url-input:focus {
+		outline: none;
+		border-color: var(--text-primary);
 	}
 </style>
